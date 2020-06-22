@@ -5,13 +5,14 @@ const User = require("../models/User.js");
 
 const addUser = async (req, res, next) => {
   user = new User();
+
   const validateStatus = validate();
 
   if (validateStatus !== "Ok") return;
-  console.log("usuario se valida correctamente");
+  console.log("user is validate");
   addDatabase();
 
-  console.log("1 was inserted!");
+  console.log("it was inserted!");
   res.status(200).send("Welcome to Dungu");
 
   //deeper
@@ -53,14 +54,11 @@ const addUser = async (req, res, next) => {
               console.log("this is executed " + user);
             });
      
-            console.log("error in singup");
+            
    
         }
       }
-      console.log(user + "Se agrega");
     });
-
-    console.log("..se agrega usuarios");
   }
 
   //userAddToDatabase(); // end;
