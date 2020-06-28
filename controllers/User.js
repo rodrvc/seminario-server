@@ -6,7 +6,7 @@ const User = require("../models/User.js");
 const addUser = async (req, res, next) => {
   user = new User();
 
-  const validateStatus = validate();
+  const validateStatus = validate(); //validate fields
 
   if (validateStatus !== "Ok") return;
   console.log("user is validate");
@@ -53,9 +53,6 @@ const addUser = async (req, res, next) => {
               if (err) return console.log(err);
               console.log("this is executed " + user);
             });
-     
-            
-   
         }
       }
     });

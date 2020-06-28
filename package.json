@@ -13,10 +13,13 @@
     "jwt-simple": "^0.5.6",
     "moment": "^2.25.3",
     "mongoose": "^5.9.14",
-    "nodemon": "^2.0.4",
     "react-router-dom": "^5.2.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "nodemon": "nodemon"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
