@@ -23,7 +23,7 @@ const addUser = async (req, res, next) => {
       const pas1 = req.body.password;
       const pas2 = req.body.repeatPassword;
       console.log(pas1, pas2);
-      console.log("Usuario se valida correctamente No se valida correctamente");
+      console.log("Usuario No se valida correctamente");
       res.status(500).send({ messaje: "I have and error here!" });
     } else {
       console.log("Usuario se valida correctamente Se valida correctamente");
@@ -53,9 +53,6 @@ const addUser = async (req, res, next) => {
               if (err) return console.log(err);
               console.log("this is executed " + user);
             });
-     
-            
-   
         }
       }
     });
