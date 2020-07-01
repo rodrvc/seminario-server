@@ -30,6 +30,7 @@ const addUser = async (req, res, next) => {
       return "Ok";
     }
   }
+
   //prettier-ignore
   async function addDatabase() {
 
@@ -51,7 +52,8 @@ const addUser = async (req, res, next) => {
     
             let adduser =  user.save(function (err, userStorage) {
               if (err) return console.log(err);
-              console.log("this is executed " + user);
+              //console.log("this is executed " + user);
+              res.status(200);
             });
         }
       }
