@@ -101,18 +101,18 @@ async function signin(req, res) {
 			bcrypt.compare(password, userStorage.password, (err, validate) => {
 				if (err) {
 					res.status(500).send({
-						messaje: "Server Error",
+						error: "Server Error",
 					});
 				} else if (!validate) {
 					res.status(400).send({
-						messaje: "password dont match",
+						error: "password dont match",
 					});
 				} else {
 					res.status(200).send({
-						messaje: "this is good! ",
+						messaje: "ok",
 
-						accesToken: jwt.accesToken(userStorage),
-						refrestToken: jwt.refrestToken(userStorage),
+						accessToken: jwt.accessToken(userStorage),
+						refreshToken: jwt.refreshToken(userStorage),
 					});
 				}
 			});
