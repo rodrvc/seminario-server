@@ -13,7 +13,10 @@ const UserSchema = new Schema({
 		enum: ["tasker", "giver"],
 		default: "giver",
 	},
-	//birthdate: String,
+	habilities: {
+		nameHability: String,
+		description: String,
+	},
 });
 
 module.exports = mongoose.model("User", UserSchema);

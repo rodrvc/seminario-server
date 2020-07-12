@@ -120,7 +120,34 @@ async function signin(req, res) {
 	});
 }
 
+function getUsers(req, res) {
+	User.find()
+		.select("-password -__v ")
+		.then((users) => {
+			if (!users) {
+				res.status(404).send({ messaje: "There are not users" });
+			} else {
+				res.status(200).send({ users });
+			}
+		});
+}
+
+//https://mongoosejs.com/docs/queries.html
+async function getTaskersByRequeriment(req, res) {
+	///https://mongoosejs.com/docs/queries.html
+	var query = await User.find({
+		userMode: "tasker",
+		habilities: { $elemMatch: { nameHability: "cocinar" } },
+	}).select("-password -__v ");
+	if (!query) {
+		res(403).send({ messaje: "No existe usuario con esa habilidad!" });
+	}
+	res.send(query);
+}
+
 module.exports = {
 	addUser,
 	signin,
+	getUsers,
+	getTaskersByRequeriment,
 };
