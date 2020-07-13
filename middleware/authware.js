@@ -9,16 +9,16 @@ exports.secureAuth = (req, res, next) => {
 	}
 
 	const token = req.headers.authorization.replace(/['"]+/g, "");
-	console.log(token);
+	//console.log(token);
 	let payload = jwt.decode(token, SECRET_KEY);
 
 	try {
 		if (payload.exp <= moment().unix()) {
-			console.log(moment().unix());
+			//console.log(moment().unix());
 			return res.status(404).send({ message: "La autorizacion expiro" });
 		}
 	} catch (ex) {
-		console.log(ex);
+		//console.log(ex);
 		return res.status(500).send({ message: "Token no valido" });
 	}
 

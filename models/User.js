@@ -17,6 +17,9 @@ const UserSchema = new Schema({
 		nameHability: String,
 		description: String,
 	},
+	phone: {
+		type: String,
+	},
 });
 
 module.exports = mongoose.model("User", UserSchema);

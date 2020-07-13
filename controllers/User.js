@@ -132,18 +132,50 @@ function getUsers(req, res) {
 		});
 }
 
-//https://mongoosejs.com/docs/queries.html
-async function getTaskersByRequeriment(req, res) {
+async function getTaskers(req, res) {
 	///https://mongoosejs.com/docs/queries.html
 	var query = await User.find({
 		userMode: "tasker",
-		habilities: { $elemMatch: { nameHability: "cocinar" } },
-	}).select("-password -__v ");
+	}) // https://mongoosejs.com/docs/api.html#query_Query-setQuery
+		.limit(100);
 	if (!query) {
 		res(403).send({ messaje: "No existe usuario con esa habilidad!" });
 	}
 	res.send(query);
 }
+
+//https://mongoosejs.com/docs/queries.html
+async function getTaskersByRequeriment(req, res) {
+	const { skill } = req.query;
+	console.log(skill);
+	///https://mongoosejs.com/docs/queries.html
+	var query = await User.find({
+		userMode: "tasker",
+		skills: { $elemMatch: { skill: skill } },
+	})
+		.select({ skills: { $elemMatch: { skill: skill } }, name: 2, lastname: 2 })
+		.then((users) => {
+			if (!users) {
+				res.status(404).send({ messaje: "No se ha encontrado" });
+			} else {
+				res.status(200).send({ users });
+			}
+		}); // https://mongoosejs.com/docs/api.html#query_Query-setQuery
+
+	// if (!query) {
+	// 	res(403).send({ messaje: "No existe usuario con esa habilidad!" });
+	// }
+	// res.send(query);
+}
+
+// User.find({ active: query.active }).then(users => {
+//       if (!users) {
+//         res.status(404).send({ message: "No se ha encontrado ningun usuario." });
+//       } else {
+//         res.status(200).send({ users });
+//       }
+//     });
+//   }
 
 module.exports = {
 	addUser,
