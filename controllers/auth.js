@@ -3,6 +3,7 @@ const moment = require("moment");
 const User = require("../models/User");
 const { model } = require("mongoose");
 
+// se evalua token
 function isEspiredToken(token) {
 	const { exp } = jwt.decoded(token);
 	const currentDate = moment().unix();
@@ -12,7 +13,7 @@ function isEspiredToken(token) {
 	}
 	return false;
 }
-
+// se evalua refresToken
 function refreshAccessToken(req, res) {
 	const { refreshToken } = req.body;
 	const isExpired = isEspiredToken(refreshToken);

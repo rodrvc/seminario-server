@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 // user_id, name, lastname, secondLastname, email, password
+
+//Modelo de para usuarios de la aplicacion
 const UserSchema = new Schema({
 	user_id: String,
 	name: String,

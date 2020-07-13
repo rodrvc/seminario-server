@@ -1,7 +1,8 @@
 const jwt = require("jwt-simple"); // https://www.npmjs.com/package/jwt-simple    https://medium.com/@asfo/autenticando-un-api-rest-con-nodejs-y-jwt-json-web-tokens-5f3674aba50e
-const SECRET_KEY = "PRTAoZbdrEq6yKaujvZLzgL6rEsX27pqTsREtjcSJWpeMM3KY3zc";
+const SECRET_KEY = "PRTAoZbdrEq6yKaujvZLzgL6rEsX27pqTsREtjcSJWpeMM3KY3zc"; // sera la llave que encryptara o desencryptara informacion
 const moment = require("moment");
 
+//  se crea token de acceso - para verificiar usuario registrado
 exports.accessToken = function (user) {
 	const payload = {
 		id: user.user_id,
@@ -15,6 +16,7 @@ exports.accessToken = function (user) {
 	return jwt.encode(payload, SECRET_KEY);
 };
 
+// se crea token para refrescar token
 exports.refreshToken = function (user) {
 	const playload = {
 		user_id: user.user_id,
