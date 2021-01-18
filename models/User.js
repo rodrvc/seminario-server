@@ -4,24 +4,24 @@ const Schema = mongoose.Schema;
 
 //Modelo de para usuarios de la aplicacion
 const UserSchema = new Schema({
-	user_id: String,
-	name: String,
-	lastname: String,
-	secondLastname: String,
-	email: String,
-	password: String,
-	userMode: {
-		type: String,
-		enum: ["tasker", "giver"],
-		default: "giver",
-	},
-	habilities: {
-		nameHability: String,
-		description: String,
-	},
-	phone: {
-		type: String,
-	},
+  user_id: String,
+  name: String,
+  lastname: String,
+  secondLastname: String,
+  email: String,
+  password: String,
+  userMode: {
+    type: String,
+    enum: ["tasker", "giver"],
+    default: "giver",
+  },
+  habilities: {
+    nameHability: String,
+    description: String,
+  },
+  phone: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("User", UserSchema);
