@@ -7,7 +7,7 @@ var homepage = require("./routes/homepage");
 app.use("/homepage", homepage);
 
 mongoose.connect(
-  `mongodb://localhost:${PORT_DB}/seminario1`,
+  `mongodb://localhost:${PORT_DB}/progra`,
   { useNewUrlParser: true, useUnifiedTopology: true },
 
   (err, res) => {
