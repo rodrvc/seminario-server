@@ -7,7 +7,7 @@ var homepage = require("./routes/homepage");
 app.use("/homepage", homepage);
 
 mongoose.connect(
-  `mongodb://localhost:${PORT_DB}/progra`,
+  `mongodb://mongo:${PORT_DB}/mydatabase`,
   { useNewUrlParser: true, useUnifiedTopology: true },
 
   (err, res) => {
@@ -16,7 +16,7 @@ mongoose.connect(
     } else {
       console.log("Se realiza conexion a la base de datos");
       app.listen(port, () => {
-        console.log("Se realiza conexion exitosamente");
+        console.log("Se realiza conexion exitosamente" + port);
       });
     }
   }
