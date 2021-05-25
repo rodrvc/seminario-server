@@ -5,7 +5,10 @@ const SECRET_KEY = "PRTAoZbdrEq6yKaujvZLzgL6rEsX27pqTsREtjcSJWpeMM3KY3zc";
 
 exports.secureAuth = (req, res, next) => {
 	if (!req.headers.authorization) {
-		return res.status(403).send({ message: "Usuario no se ha autenticado" });
+		return res.status(403).send({
+             message: "Usuario no se ha autenticado", 
+             error: true,
+         });
 	}
 
 	const token = req.headers.authorization.replace(/['"]+/g, "");

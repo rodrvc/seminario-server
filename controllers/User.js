@@ -24,9 +24,12 @@ const addUser = (req, res) => {
 			const pas2 = req.body.repeatPassword;
 			console.log(pas1, pas2);
 			console.log("Usuario se valida correctamente No se valida correctamente");
-			res.status(500).send({ messaje: "password dont match!" });
+			res.status(500).send({ 
+                messaje: "password dont match!",
+                error: true
+            });
 		} else {
-			console.log("user is validated! correctly");
+			console.log("user is validated! successfully");
 			return "Ok";
 		}
 	}
@@ -96,16 +99,19 @@ async function signin(req, res) {
 			if (!userStorage) {
 				return res.status(404).send({
 					messaje: "User not found!" + req.body.email,
+                    error: true
 				});
 			}
 			bcrypt.compare(password, userStorage.password, (err, validate) => {
 				if (err) {
 					res.status(500).send({
-						error: "Server Error",
+						messaje: "Server Error",
+                        error: true
 					});
 				} else if (!validate) {
 					res.status(400).send({
-						error: "password dont match",
+                        messaje: "password dont match",
+						error: true,
 					});
 				} else {
 					res.status(200).send({
