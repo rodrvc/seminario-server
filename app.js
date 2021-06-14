@@ -9,8 +9,11 @@ app.use(express.json()); //  convierte la respuesta en formato json
 app.use(express.urlencoded({ extended: false })); //
 
 // load routings
-const authRute = require("./routes/auth");
-const route = require("./routes/homepage");
+//const authRute = require("./routes/auth");
+//const route = require("./routes/homepage");
+
+
+const route  = require("./routes/user/users");
 
 //headers // para no usar cors extension //Solo para desarrollo ** Permitiran conexion a api desde el host actual!
 app.use((req, res, next) => {
@@ -25,6 +28,6 @@ app.use((req, res, next) => {
 });
 
 app.use(route); // usara la parametro Router
-app.use(authRute);
+//app.use(authRute);
 
 module.exports = app;

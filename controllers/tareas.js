@@ -1,6 +1,6 @@
 const saltRounds = 10;
 
-const Tarea = require("../models/Tareas");
+const Tarea = require("../models2/Tareas");
 
 const addTarea = (req, res) => {
     tarea = new Tarea();

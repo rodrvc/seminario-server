@@ -1,29 +1,28 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-// user_id, name, lastname, secondLastname, email, password
+const pool = require("./config/database");
 
-// Modelo de para usuarios de la aplicacion
-const UserSchema = new Schema({
-    user_id: String,
-    name: String,
-    lastname: String,
-    secondLastname: String,
-    email: String,
-    password: String,
-    userMode: {
-        type: String,
-        enum: [
-            "tasker", "giver"
-        ],
-        default: "giver"
-    },
-    habilities: {
-        nameHability: String,
-        description: String
-    },
-    phone: {
-        type: String
+
+
+ class UserModel {
+
+    async getUser(){
+        try {
+            return await pool.query("SELECT user_id, first_name, last_name, email, gender from users where first_name = 'Jeanette'")
+            console.log(data.rows); 
+            return data; 
+          } catch (error) {
+            return error; 
+          }
+
     }
-});
 
-module.exports = mongoose.model("User", UserSchema);
+}
+
+
+module.exports = UserModel;
+
+
+
+
+
+
+  

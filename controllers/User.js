@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("../services/jwt");
-const User = require("../models/User.js");
+const User = require("../models2/User.js");
 
 const addUser = (req, res) => {
     user = new User();
