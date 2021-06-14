@@ -17,7 +17,7 @@ const addUser = (req, res) => {
     console.log("it was inserted!");
     res.status(200).send("Welcome to Dungu");
 
-    // deeper
+    // deeper //
 
     function validate() { // handlerErr
         if (req.body.password !== req.body.repeatPassword) {
