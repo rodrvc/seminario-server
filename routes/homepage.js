@@ -23,30 +23,30 @@ router.get("/", function (req, res) {
 });
 
 // funcion de pruba (verifica conexion)
-router.get("/users", function (req, res) {
-    console.log("hey");
-    res.send("hello");
-});
+// router.get("/users", function (req, res) {
+//     console.log("hey");
+//     res.send("hello");
+// });
 
-// para agregar usuarios y/o registrarlos en la app
-router.post("/add", addDatabase);
+// // para agregar usuarios y/o registrarlos en la app
+// router.post("/add", addDatabase);
 
-router.post("/tarea", addTarea);
+// router.post("/tarea", addTarea);
 
-// para ingresar  inicio de sesion
-router.post("/signin", signin);
-// obtiene usuarios (Todos)
-router.get("/get-users", getUsers);
+// // para ingresar  inicio de sesion
+// router.post("/signin", signin);
+// // obtiene usuarios (Todos)
+// router.get("/get-users", getUsers);
 
-router.get("/tarea/:id", getOneTask);
+// router.get("/tarea/:id", getOneTask);
 
-router.put("/tarea/:id", putOneTask);
+// router.put("/tarea/:id", putOneTask);
 
-router.get("/tarea", getTarea);
+// router.get("/tarea", getTarea);
 
-// obtiene usuarios taskers solicitados
-router.get("/get-taskers", getTaskersByRequeriment);
+// // obtiene usuarios taskers solicitados
+// router.get("/get-taskers", getTaskersByRequeriment);
 
-router.delete("/tarea/:id", deleteOneTask);
+// router.delete("/tarea/:id", deleteOneTask);
 
-module.exports = router;
+// module.exports = router;
