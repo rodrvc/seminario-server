@@ -14,6 +14,51 @@ const getUser = async function () {
   }
 };
 
+const signin = async function (email, password){
+  query =  "SELECT id, firstname, lastname, email, password , gender from users where email = $1";
+  value = [email];
+
+
+
+  if(!email){
+    return {"error" : true , "messaje": "el campo email es vacio" }
+  }
+
+  try {
+    const user =  await pool.query(query, value);
+
+
+    if(!user.rows[0]){
+      return { 
+        "error": true,
+        "message": "usuario no existe"
+      }
+    }
+
+    console.log(user.rows[0]);
+
+
+
+    const match = await bcrypt.compare(password, user.rows[0].password);
+
+    if(match) {
+      console.log("login")
+      return user.rows[0];
+    }
+
+  
+    return { "error": true ,  "message" : "password dont't match"}
+
+  
+  }catch(err) {
+    console.log(err)
+    return { "error": "ha ocurrido un error en el servidor"}
+  }
+  
+}
+
+
+
 const signup = async function (user) {
   result = {};
 
@@ -97,4 +142,5 @@ const signup = async function (user) {
 module.exports = {
   getUser,
   signup,
+  signin
 };

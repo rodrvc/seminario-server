@@ -28,7 +28,24 @@ const UserModel = require("../models/User");
   }
 
 
-  module.exports = { getUsers , signUp }
+  const signIn = async (req , res) => {
+    const {email , password } = req.body
+    const user = await UserModel.signin(email, password)
+    
+    if(user.error){
+      console.error(user)
+      res.status(500).send(user)
+      return
+    }
+    res.status(200).send(user)
+  }
+
+
+  module.exports = { 
+    getUsers, 
+    signUp,
+    signIn 
+  }
 
 
 
