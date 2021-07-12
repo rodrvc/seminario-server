@@ -15,8 +15,8 @@ const getUser = async function () {
 };
 
 const signin = async function (email, password){
-  query =  "SELECT id, firstname, lastname, email, password , gender from users where email = $1";
-  value = [email];
+  const query =  "SELECT id, firstname, lastname, email, password , gender from users where email = $1";
+  const value = [email];
 
 
 
@@ -26,7 +26,6 @@ const signin = async function (email, password){
 
   try {
     const user =  await pool.query(query, value);
-
 
     if(!user.rows[0]){
       return { 
@@ -56,7 +55,6 @@ const signin = async function (email, password){
   }
   
 }
-
 
 
 const signup = async function (user) {

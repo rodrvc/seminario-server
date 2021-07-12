@@ -1,12 +1,12 @@
 
 const { modelNames } = require("mongoose");
 const UserModel = require("../models/User");
+const jwt = require("../services/jwt");
 // const UserModel    = require("../models/User");
 
 
   //user controllers
   const getUsers = async (req , res) => {
-   
       const users = await UserModel.getUser()
       res.status(200).send(users.rows);
   }
@@ -37,7 +37,12 @@ const UserModel = require("../models/User");
       res.status(500).send(user)
       return
     }
-    res.status(200).send(user)
+    if(!user.id) res.status(400).send({"error": true, "mensaje" : "usuario no encontrado"}) 
+    res.status(200).send({
+      messaje: "ok",
+      accessToken: jwt.accessToken(user),
+      refreshToken: jwt.refreshToken(user),
+    })
   }
 
 

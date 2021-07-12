@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: false })); //
 
 
 const route  = require("./routes/user/users");
+const router = require("./routes/task/task");
 
 //headers // para no usar cors extension //Solo para desarrollo ** Permitiran conexion a api desde el host actual!
 app.use((req, res, next) => {
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
 });
 
 app.use(route); // usara la parametro Router
+app.use(router);
 //app.use(authRute);
 
 module.exports = app;
